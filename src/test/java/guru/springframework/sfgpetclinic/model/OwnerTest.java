@@ -1,10 +1,14 @@
 package guru.springframework.sfgpetclinic.model;
 
+import guru.springframework.sfgpetclinic.ModelTest;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.*;
 
-class OwnerTest {
+class OwnerTest implements ModelTest {
 
     @Test
     void dependentAssertions(){
@@ -20,5 +24,8 @@ class OwnerTest {
                         ()-> assertEquals("Key West",owner.getCity()),
                         ()-> assertEquals("1231231234",owner.getTelephone())
                 ));
+
+        assertThat(owner.getCity(), is("Key West"));
+
     }
 }
